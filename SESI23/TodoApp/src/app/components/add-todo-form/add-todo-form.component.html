@@ -1,0 +1,25 @@
+<form class="mt-5">
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      name="inputTodo"
+      placeholder="Enter todo..."
+      class="form-control"
+      [(ngModel)]="inputTodo"
+    />
+    <input
+      type="submit"
+      value="Add Todo"
+      class="btn btn-primary"
+      (click)="addTodo()"
+    />
+  </div>
+  <!-- <div *ngIf="inputTodo.invalid && showValidationErrors">
+    <p class="help is-danger" *ngIf="inputTodo.errors.required">
+      Please enter the text of your todo
+    </p>
+    <p class="help is-danger" *ngIf="inputTodo.errors.minlength">
+      Todo text must be at least 2 characters
+    </p>
+  </div> -->
+</form>

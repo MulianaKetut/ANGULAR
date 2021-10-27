@@ -15,8 +15,78 @@
 <p>{{ counter }} kali diklik!</p>
 
 <ul>
-  <li *ngFor="let item of items">{{item}}</li>
+  <li *ngFor="let item of items">{{ item }}</li>
 </ul>
 
 <app-item-detail [item]="currentItem"></app-item-detail>
 <app-item-output (newItemEvent)="addItem($event)"></app-item-output>
+
+<!-- //two way binding -->
+<app-sizer [(size)]="fontSizePx"></app-sizer>
+<div [style.font-size.px]="fontSizePx">Resizable Text</div>
+<!-- <app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"></app-sizer> -->
+
+<!-- <label>
+  Say something:
+  <input #message />{{ message | json }}
+</label> -->
+
+<!-- show or not -->
+<app-paragraph [message]="'You can see me'" [isShown]="true"></app-paragraph>
+
+<!-- ngFor -->
+<table border="1">
+  <tr *ngFor="let message of messages; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td>{{ message }}</td>
+  </tr>
+</table>
+
+<table border="1" style="margin-top: 20px">
+  <ng-template ngFor let-message [ngForOf]="messages" let-i="index">
+    <tr *ngIf="i > 1">
+      <td>{{ i + 1 }}</td>
+      <td>{{ message }}</td>
+    </tr>
+  </ng-template>
+</table>
+
+<h2>NgSwitch</h2>
+<ul *ngFor="let person of people" [ngSwitch]="person.country">
+  <li *ngSwitchCase="'UK'" class="text-blue">
+    {{ person.name }} {{ person.age }} {{ person.country }}
+  </li>
+  <li *ngSwitchCase="'USA'" class="text-red">
+    {{ person.name }} {{ person.age }} {{ person.country }}
+  </li>
+  <li *ngSwitchCase="'HK'" class="text-green">
+    {{ person.name }} {{ person.age }} {{ person.country }}
+  </li>
+  <li *ngSwitchDefault>
+    {{ person.name }} {{ person.age }} {{ person.country }}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let person of people" [ngStyle]="{'color': (person.country === 'USA') ? 'red' : (person.country === 'HK') ? 'blue' : (person.country === 'MARS') ? 'green' : ''}">
+      {{person.name}}, {{person.age}}th dari {{person.country}}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let person of people" [class.text-red]="person.country==='USA'" [class.text-blue]="person.country==='HK'" [class.text-green]="person.country==='MARS'">
+      {{person.name}}, {{person.age}}th dari {{person.country}}
+  </li>
+</ul>
+
+
+
+<h2>pipe format json & date</h2>
+<p>{{ people | json }}</p>
+<p>{{ currentDate | date:'dd MMMM yyyy' | uppercase }}</p>
+
+
+<!-- pipe  -->
+<!-- <h2>
+  {{ 784578153 | fileZisePipe: 'GB' }}
+</h2> -->

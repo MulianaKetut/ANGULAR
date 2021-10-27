@@ -13,6 +13,33 @@ export class AppComponent {
   counter = 0;
   items: string[] = [];
   currentItem = '';
+  fontSizePx = 16;
+  messages: string[] = ['i can see you', 'now you see me', 'now you dont'];
+
+  people: any[] = [
+    {
+      name: 'Douglas Pace',
+      age: '18',
+      country: 'USA',
+    },
+    {
+      name: 'Douglas Pace',
+      age: '18',
+      country: 'HK',
+    },
+    {
+      name: 'Douglas Pace',
+      age: '18',
+      country: 'MARS',
+    },
+    {
+      name: 'Douglas Pace',
+      age: '18',
+      country: 'UK',
+    },
+  ];
+
+  currentDate = new Date();
 
   addItem(newItem: string) {
     this.currentItem = newItem;
