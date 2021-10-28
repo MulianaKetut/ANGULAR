@@ -1,0 +1,7 @@
+h2,
+.shadow-message {
+  color: blue;
+}
+div.shadow-encapsulation {
+  border: 3px solid blue;
+}

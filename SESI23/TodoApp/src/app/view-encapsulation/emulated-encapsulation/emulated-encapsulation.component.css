@@ -1,0 +1,8 @@
+h2,
+.emulated-message {
+  color: green;
+}
+
+div.emulated-encapsulation {
+  border: 2px solid green;
+}

@@ -1,0 +1,8 @@
+h2,
+.none-message {
+  color: red;
+}
+
+div.no-encapsulation {
+  border: 1px solid red;
+}

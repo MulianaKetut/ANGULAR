@@ -7,18 +7,26 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AddTodoFormComponent } from './components/add-todo-form/add-todo-form.component';
 import { FormsModule } from '@angular/forms';
+import { TodoDashboardModule } from './todo-dashboard/todo-dashboard.module';
+import { NoEncapsulationComponent } from './view-encapsulation/no-encapsulation/no-encapsulation.component';
+import { EmulatedEncapsulationComponent } from './view-encapsulation/emulated-encapsulation/emulated-encapsulation.component';
+import { ShadowDomEncapsulationComponent } from './view-encapsulation/shadow-dom-encapsulation/shadow-dom-encapsulation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     TodoListComponent,
-    AddTodoFormComponent
+    AddTodoFormComponent,
+    NoEncapsulationComponent,
+    EmulatedEncapsulationComponent,
+    ShadowDomEncapsulationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    TodoDashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
