@@ -1,0 +1,32 @@
+<form [formGroup]="todoForm" (ngSubmit)="addTodo()">
+  <div class="form-group">
+    <label for="todo">To Do</label>
+    <input
+      type="text"
+      class="form-control"
+      id="todo"
+      name="todo"
+      formControlName="todo"
+    />
+    <div
+      *ngIf="todo?.invalid && (todo?.dirty || todo?.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="todo?.errors?.required">Todo is required.</div>
+      <div *ngIf="todo?.errors?.minlength">
+        Todo must be at least
+        {{ todo?.errors?.minlength?.requiredLength }} characters long.
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mt-2" [disabled]="!todoForm.valid">Add Todo</button>
+</form>
+
+<div>
+  <h3>To Do List</h3>
+  <ul>
+    <li *ngFor="let todo of todos">
+      {{ todo.content }}
+    </li>
+  </ul>
+</div>

@@ -13,6 +13,7 @@ import { EmulatedEncapsulationComponent } from './view-encapsulation/emulated-en
 import { ShadowDomEncapsulationComponent } from './view-encapsulation/shadow-dom-encapsulation/shadow-dom-encapsulation.component';
 import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
 import { TemplateReactiveFormComponent } from './components/template-reactive-form/template-reactive-form.component';
+import { AddTodoReactiveFormComponent } from './components/add-todo-reactive-form/add-todo-reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TemplateReactiveFormComponent } from './components/template-reactive-fo
     ShadowDomEncapsulationComponent,
     TemplateDrivenFormComponent,
     TemplateReactiveFormComponent,
+    AddTodoReactiveFormComponent,
   ],
   imports: [
     BrowserModule,

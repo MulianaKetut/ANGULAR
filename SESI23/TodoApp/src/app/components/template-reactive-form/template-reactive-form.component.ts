@@ -49,7 +49,7 @@ export class TemplateReactiveFormComponent implements OnInit {
   }
 
   onLogin() {
-    this.isSubmitted = true;
+    // this.isSubmitted = true;
     // this.validateForm();
     console.log(this.username);
 
