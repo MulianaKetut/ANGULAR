@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AddTodoFormComponent } from './components/add-todo-form/add-todo-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoDashboardModule } from './todo-dashboard/todo-dashboard.module';
 import { NoEncapsulationComponent } from './view-encapsulation/no-encapsulation/no-encapsulation.component';
 import { EmulatedEncapsulationComponent } from './view-encapsulation/emulated-encapsulation/emulated-encapsulation.component';
 import { ShadowDomEncapsulationComponent } from './view-encapsulation/shadow-dom-encapsulation/shadow-dom-encapsulation.component';
+import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
+import { TemplateReactiveFormComponent } from './components/template-reactive-form/template-reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -20,15 +22,18 @@ import { ShadowDomEncapsulationComponent } from './view-encapsulation/shadow-dom
     AddTodoFormComponent,
     NoEncapsulationComponent,
     EmulatedEncapsulationComponent,
-    ShadowDomEncapsulationComponent
+    ShadowDomEncapsulationComponent,
+    TemplateDrivenFormComponent,
+    TemplateReactiveFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    TodoDashboardModule
+    TodoDashboardModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

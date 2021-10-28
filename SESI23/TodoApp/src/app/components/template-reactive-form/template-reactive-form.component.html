@@ -1,0 +1,46 @@
+<h1>Login Form</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      name="username"
+      formControlName="username"
+    />
+    <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="alert alert-danger">
+      <div *ngIf="username?.errors?.required">Username is required.</div>
+      <div *ngIf="username?.errors?.minlength">
+        Username must be at least {{ username?.errors?.minlength?.requiredLength }} characters long.
+      </div>
+      <!-- <div *ngIf="username.errors?.forbiddenName">Name cannot be Bob.</div> -->
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      formControlName="password"
+    />
+    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
+      <div *ngIf="password?.errors?.required">Password is required.</div>
+      <div *ngIf="password?.errors?.minlength">
+        Password must be at least {{ password?.errors?.minlength?.requiredLength }} characters long.
+      </div>
+      <div *ngIf="password?.errors?.pattern">{{ password?.errors?.pattern?.requiredPattern }}</div>
+      <div *ngIf="password?.errors?.pattern">Password must be at least one upper case, at least one lower case and at least one digit number.</div>
+      <!-- <div *ngIf="username.errors?.forbiddenName">Name cannot be Bob.</div> -->
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mt-2">Login</button>
+</form>
+
+<div *ngIf="currentUser.isLogin">
+  Successfully login. Hello, {{ currentUser.username }}
+</div>
