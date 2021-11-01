@@ -10,6 +10,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { StudioComponent } from './components/studio/studio.component';
 import { MovieComponent } from './components/movie/movie.component';
+import { Contoh1Component } from './components/contoh1/contoh1.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MovieComponent } from './components/movie/movie.component';
     UserProfileComponent,
     StudioComponent,
     MovieComponent,
+    Contoh1Component,
   ],
   imports: [
     BrowserModule,
