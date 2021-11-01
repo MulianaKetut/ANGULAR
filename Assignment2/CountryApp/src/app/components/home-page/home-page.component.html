@@ -1,0 +1,37 @@
+<div class="text-center">
+  <div class="pt-3">
+    <h2>Three Most Populated Countries</h2>
+    <div class="row row-cols-1 row-cols-md-3">
+      <div
+        *ngFor="let country of countriesByMostPopulation"
+        routerLink="/country-detail/{{ country.id }}"
+        class="col mb-4 m-auto"
+      >
+        <div class="card text-white" style="background-color: sienna">
+          <div class="card-body">
+            <h5 class="card-title">{{ country.name }}</h5>
+            <p class="card-text">{{ country.population | number }} people</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-3">
+    <h2>Three Largest Countries(Area)</h2>
+    <div class="row row-cols-1 row-cols-md-3">
+      <div
+        *ngFor="let country of countriesByLargestArea"
+        routerLink="/country-detail/{{ country.id }}"
+        class="col mb-4 m-auto"
+      >
+        <div class="card text-white" style="background-color: sienna">
+          <div class="card-body">
+            <h5 class="card-title">{{ country.name }}</h5>
+            <p class="card-text">{{ country.area | number }} km&#178;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

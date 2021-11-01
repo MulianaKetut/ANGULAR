@@ -1,0 +1,17 @@
+<div class="text-center">
+  <h2>List of All the Countries in Our Database</h2>
+  <div class="row row-cols-1 row-cols-md-3">
+    <div
+      *ngFor="let country of countries"
+      routerLink="/country-detail/{{ country.id }}"
+      class="col mb-4 m-auto"
+    >
+      <div class="card text-white mw-10" style="background-color: green">
+        <div class="card-body">
+          <h5 class="card-title">{{ country.name }}</h5>
+          <p class="card-text">Capital ({{ country.capital }})</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

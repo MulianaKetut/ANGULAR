@@ -1,0 +1,38 @@
+<div>
+  <div *ngIf="country" class="row justify-content-center">
+    <div class="col-auto">
+      <h1 class="text-left">{{ country.name }}</h1>
+      <table class="table table-borderless text-left">
+        <tr>
+          <td>Capital:</td>
+          <td>{{ country.capital }}</td>
+        </tr>
+
+        <tr>
+          <td>Area:</td>
+          <td>{{ country.area | number }} km&#178;</td>
+        </tr>
+
+        <tr>
+          <td>Population:</td>
+          <td>{{ country.population | number }} people</td>
+        </tr>
+
+        <tr>
+          <td>GDP:</td>
+          <td>{{ country.gdp | number }} USD</td>
+        </tr>
+
+        <tr>
+          <td>Currency:</td>
+          <td>{{ country.currency }}</td>
+        </tr>
+        <tr>
+          <td>
+            <a [routerLink]="['/home']" class="btn btn-danger bg-danger">Go back</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
