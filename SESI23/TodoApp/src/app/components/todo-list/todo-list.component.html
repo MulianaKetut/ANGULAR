@@ -1,5 +1,5 @@
-<app-add-todo-form (newTodoEvent)="addTodo($event)"></app-add-todo-form>
-
+<!-- <app-add-todo-form (newTodoEvent)="addTodo($event)"></app-add-todo-form> -->
+<app-add-todo-reactive-form (newTodoEvent)="addTodo($event)"></app-add-todo-reactive-form>
 <div *ngIf="todos.length == 0">
   <p class="text-center">Todo is empty!</p>
 </div>

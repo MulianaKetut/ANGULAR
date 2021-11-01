@@ -9,8 +9,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-todo-reactive-form.component.css'],
 })
 export class AddTodoReactiveFormComponent implements OnInit {
-  // @Output() newTodoEvent = new EventEmitter<Todo>();
-  todos: Todo[] = [];
+  @Output() newTodoEvent = new EventEmitter<Todo>();
+  // todos: Todo[] = [];
 
   constructor() {}
 
@@ -39,8 +39,8 @@ export class AddTodoReactiveFormComponent implements OnInit {
         text: 'Please, Enter todo!',
       });
     } else {
-      // this.newTodoEvent.emit(todo);
-      this.todos.push(todo);
+      this.newTodoEvent.emit(todo);
+      // this.todos.push(todo);
       this.todoForm.reset();
     }
   }
