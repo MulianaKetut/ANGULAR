@@ -29,6 +29,7 @@ export class ListUserComponent implements OnInit {
     this.userService.getUsers().subscribe((data) => {
       this.users = data;
     });
+    this.users.sort((a, b) => a.id - b.id);
   }
 
   addNewUser() {
