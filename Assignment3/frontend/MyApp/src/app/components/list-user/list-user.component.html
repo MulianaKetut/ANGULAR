@@ -36,7 +36,9 @@
           </tr>
         </tbody>
       </table>
-      <!-- <app-modal-content></app-modal-content> -->
+      <div *ngIf="users.length == 0">
+        <p class="text-center">user is empty!</p>
+      </div>
     </div>
   </div>
 </div>

@@ -56,8 +56,9 @@ export class UserComponent implements OnInit {
       },
       { validator: ConfirmedValidator('password', 'confirmPassword') }
     );
-
-    this.setDataUser();
+    if (localStorage.getItem('modify') == 'update') {
+      this.setDataUser();
+    }
   }
 
   ngOnInit(): void {}
@@ -170,7 +171,13 @@ export class UserComponent implements OnInit {
               this.addNewUserForm.controls['lastName'].setValue(
                 this.postData.lastName
               );
-              this.addNewUserForm.controls['role'].setValue(this.postData.role);
+              let value;
+              if (this.postData.role == 'Admin') {
+                value = 0;
+              } else {
+                value = 1;
+              }
+              this.addNewUserForm.controls['role'].setValue(value);
               this.addNewUserForm.controls['email'].setValue(
                 this.postData.email
               );
