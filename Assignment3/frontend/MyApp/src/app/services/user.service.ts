@@ -19,7 +19,9 @@ export class UserService {
   userIdData: any;
   userIdSource = new BehaviorSubject<number>(0);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.userIdData= this.userIdSource.asObservable();
+  }
 
   createUser(user: User): Observable<any> {
     const api = `${this.endpoint}`;

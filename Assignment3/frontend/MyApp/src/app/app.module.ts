@@ -9,10 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { UserService } from './services/user.service';
-import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, ListUserComponent, UpdateUserComponent],
+  declarations: [AppComponent, UserComponent, ListUserComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
