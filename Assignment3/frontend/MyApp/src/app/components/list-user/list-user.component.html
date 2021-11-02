@@ -1,0 +1,42 @@
+<div class="row mt-3">
+  <div class="col">
+    <span (click)="addNewUser()" class="btn btn-primary btn-xs">Add User</span>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Title</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.title }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <span
+                class="btn btn-secondary btn-xs mr-2"
+                (click)="updateUser(user.id)"
+              >
+                <i class="bi bi-pencil"></i
+              ></span>
+              <span class="btn btn-danger btn-xs" (click)="deleteUser(user.id)">
+                <i class="bi bi-trash"></i
+              ></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <app-modal-content></app-modal-content> -->
+    </div>
+  </div>
+</div>
