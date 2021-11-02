@@ -11,6 +11,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { StudioComponent } from './components/studio/studio.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { Contoh1Component } from './components/contoh1/contoh1.component';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { Contoh1Component } from './components/contoh1/contoh1.component';
     StudioComponent,
     MovieComponent,
     Contoh1Component,
+    ReactiveFormComponent,
   ],
   imports: [
     BrowserModule,
