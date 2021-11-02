@@ -3,6 +3,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { UpdateUserComponent } from '../update-user/update-user.component';
 import { UserComponent } from '../user/user.component';
 
 @Component({
@@ -32,7 +33,6 @@ export class ListUserComponent implements OnInit {
   }
 
   addNewUser() {
-    localStorage.setItem('modify', 'add');
     this.bsModalRef = this.bsModalService.show(UserComponent);
     this.bsModalRef.content.event.subscribe((result: any) => {
       if (result == 'OK') {
@@ -65,9 +65,9 @@ export class ListUserComponent implements OnInit {
     // let user: User = this.users.find((x) => x.id == id)!;
     // console.log(user);
     // this.userService.updateUser(user, id);
-    localStorage.setItem('modify', 'update');
+
     this.userService.changeUserId(id);
-    this.bsModalRef = this.bsModalService.show(UserComponent);
+    this.bsModalRef = this.bsModalService.show(UpdateUserComponent);
     this.bsModalRef.content.event.subscribe((result: any) => {
       console.log('DATA RESULT', result);
       if (result == 'OK') {

@@ -1,389 +1,187 @@
-<ng-template [ngIf]="modify == 'add'">
-  <div role="document">
-    <div>
-      <form
-        class="form-horizontal"
-        id="add-form"
-        [formGroup]="addNewUserForm"
-        (ngSubmit)="onUserFormSubmit()"
-      >
-        <div class="modal-header">
-          <h4 class="modal-title" id="add-modal-label">Add User</h4>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-dismiss="modal"
-            aria-label="Close"
-            (click)="onClose()"
+<div role="document">
+  <div>
+    <form
+      class="form-horizontal"
+      id="add-form"
+      [formGroup]="addNewUserForm"
+      (ngSubmit)="onUserFormSubmit()"
+    >
+      <div class="modal-header">
+        <h4 class="modal-title" id="add-modal-label">Add User</h4>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="onClose()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Title"
+            name="title"
+            formControlName="title"
+            required
+          />
+          <div
+            *ngIf="title?.dirty && title?.errors?.required"
+            class="text-danger"
           >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input
-              type="text"
-              class="form-control"
-              id="title"
-              placeholder="Title"
-              name="title"
-              formControlName="title"
-              required
-            />
-            <div
-              *ngIf="title?.dirty && title?.errors?.required"
-              class="text-danger"
-            >
-              Please enter your title
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="firstName"
-              placeholder="First Name"
-              name="firstName"
-              formControlName="firstName"
-              required
-            />
-            <div
-              *ngIf="firstName?.dirty && firstName?.errors?.required"
-              class="text-danger"
-            >
-              Please enter first name
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="lastName"
-              placeholder="Last Name"
-              name="lastName"
-              formControlName="lastName"
-              required
-            />
-            <div
-              *ngIf="lastName?.dirty && lastName?.errors?.required"
-              class="text-danger"
-            >
-              Please enter last name
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="role">Role</label>
-            <select
-              class="form-control"
-              id="role"
-              name="role"
-              formControlName="role"
-              required
-            >
-              <!-- <option>Select Role</option> -->
-              <option *ngFor="let role of roles" [value]="role.value">
-                {{ role.name }}
-              </option>
-            </select>
-            <div
-              *ngIf="role?.dirty && role?.errors?.required"
-              class="text-danger"
-            >
-              Please enter role
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Email"
-              name="email"
-              formControlName="email"
-              required
-            />
-            <div
-              *ngIf="email?.dirty && email?.errors?.required"
-              class="text-danger"
-            >
-              Please enter email
-            </div>
-            <div
-              *ngIf="email?.dirty && email?.errors?.email"
-              class="text-danger"
-            >
-              Invalid email format
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Password"
-              name="password"
-              formControlName="password"
-              required
-              minlength="6"
-            />
-            <div
-              *ngIf="password?.dirty && password?.errors?.required"
-              class="text-danger"
-            >
-              Please enter password
-            </div>
-            <div
-              *ngIf="password?.dirty && password?.errors?.minlength"
-              class="text-danger"
-            >
-              Password must not less than 6 character
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="confirmPassword"
-              placeholder="Confirmation Password"
-              name="confirmPassword"
-              formControlName="confirmPassword"
-              required
-            />
-            <div
-              *ngIf="
-                confirmPassword?.dirty && confirmPassword?.errors?.required
-              "
-              class="text-danger"
-            >
-              Please enter confirm password
-            </div>
-            <div
-              *ngIf="confirmPassword?.dirty && f.confirmPassword.errors"
-              class="text-danger"
-            >
-              Doesn't match with password
-            </div>
+            Please enter your title
           </div>
         </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-dismiss="modal"
-            (click)="onClose()"
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            placeholder="First Name"
+            name="firstName"
+            formControlName="firstName"
+            required
+          />
+          <div
+            *ngIf="firstName?.dirty && firstName?.errors?.required"
+            class="text-danger"
           >
-            Close
-          </button>
-          <button
-            type="submit"
-            class="btn btn-primary"
-            [disabled]="!addNewUserForm.valid"
-          >
-            Submit
-          </button>
+            Please enter first name
+          </div>
         </div>
-      </form>
-    </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            placeholder="Last Name"
+            name="lastName"
+            formControlName="lastName"
+            required
+          />
+          <div
+            *ngIf="lastName?.dirty && lastName?.errors?.required"
+            class="text-danger"
+          >
+            Please enter last name
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select
+            class="form-control"
+            id="role"
+            name="role"
+            formControlName="role"
+            required
+          >
+            <!-- <option>Select Role</option> -->
+            <option *ngFor="let role of roles" [value]="role.value">
+              {{ role.name }}
+            </option>
+          </select>
+          <div
+            *ngIf="role?.dirty && role?.errors?.required"
+            class="text-danger"
+          >
+            Please enter role
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Email"
+            name="email"
+            formControlName="email"
+            required
+          />
+          <div
+            *ngIf="email?.dirty && email?.errors?.required"
+            class="text-danger"
+          >
+            Please enter email
+          </div>
+          <div *ngIf="email?.dirty && email?.errors?.email" class="text-danger">
+            Invalid email format
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            name="password"
+            formControlName="password"
+            required
+            minlength="6"
+          />
+          <div
+            *ngIf="password?.dirty && password?.errors?.required"
+            class="text-danger"
+          >
+            Please enter password
+          </div>
+          <div
+            *ngIf="password?.dirty && password?.errors?.minlength"
+            class="text-danger"
+          >
+            Password must not less than 6 character
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            placeholder="Confirmation Password"
+            name="confirmPassword"
+            formControlName="confirmPassword"
+            required
+          />
+          <div
+            *ngIf="confirmPassword?.dirty && confirmPassword?.errors?.required"
+            class="text-danger"
+          >
+            Please enter confirm password
+          </div>
+          <div
+            *ngIf="confirmPassword?.dirty && f.confirmPassword.errors"
+            class="text-danger"
+          >
+            Doesn't match with password
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          (click)="onClose()"
+        >
+          Close
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!addNewUserForm.valid"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
   </div>
-</ng-template>
-
-<ng-template [ngIf]="modify == 'update'">
-  <div role="document">
-    <div>
-      <form
-        class="form-horizontal"
-        id="add-form"
-        [formGroup]="addNewUserForm"
-        (ngSubmit)="onUserEditFormSubmit()"
-      >
-        <div class="modal-header">
-          <h4 class="modal-title" id="add-modal-label">Update User</h4>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-dismiss="modal"
-            aria-label="Close"
-            (click)="onClose()"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input
-              type="text"
-              class="form-control"
-              id="title"
-              placeholder="Title"
-              name="title"
-              formControlName="title"
-              required
-            />
-            <div
-              *ngIf="title?.dirty && title?.errors?.required"
-              class="text-danger"
-            >
-              Please enter your title
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="firstName"
-              placeholder="First Name"
-              name="firstName"
-              formControlName="firstName"
-              required
-            />
-            <div
-              *ngIf="firstName?.dirty && firstName?.errors?.required"
-              class="text-danger"
-            >
-              Please enter first name
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="lastName"
-              placeholder="Last Name"
-              name="lastName"
-              formControlName="lastName"
-              required
-            />
-            <div
-              *ngIf="lastName?.dirty && lastName?.errors?.required"
-              class="text-danger"
-            >
-              Please enter last name
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="role">Role</label>
-            <select
-              class="form-control"
-              id="role"
-              name="role"
-              formControlName="role"
-              required
-            >
-              <!-- <option>Select Role</option> -->
-              <option *ngFor="let role of roles" [value]="role.value">
-                {{ role.name }}
-              </option>
-            </select>
-            <div
-              *ngIf="role?.dirty && role?.errors?.required"
-              class="text-danger"
-            >
-              Please enter role
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Email"
-              name="email"
-              formControlName="email"
-              required
-            />
-            <div
-              *ngIf="email?.dirty && email?.errors?.required"
-              class="text-danger"
-            >
-              Please enter email
-            </div>
-            <div
-              *ngIf="email?.dirty && email?.errors?.email"
-              class="text-danger"
-            >
-              Invalid email format
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Password"
-              name="password"
-              formControlName="password"
-              required
-              minlength="6"
-            />
-            <div
-              *ngIf="password?.dirty && password?.errors?.required"
-              class="text-danger"
-            >
-              Please enter password
-            </div>
-            <div
-              *ngIf="password?.dirty && password?.errors?.minlength"
-              class="text-danger"
-            >
-              Password must not less than 6 character
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="confirmPassword"
-              placeholder="Confirmation Password"
-              name="confirmPassword"
-              formControlName="confirmPassword"
-              required
-            />
-            <div
-              *ngIf="
-                confirmPassword?.dirty && confirmPassword?.errors?.required
-              "
-              class="text-danger"
-            >
-              Please enter confirm password
-            </div>
-            <div
-              *ngIf="confirmPassword?.dirty && f.confirmPassword.errors"
-              class="text-danger"
-            >
-              Doesn't match with password
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-dismiss="modal"
-            (click)="onClose()"
-          >
-            Close
-          </button>
-          <button
-            type="submit"
-            class="btn btn-primary"
-            [disabled]="!addNewUserForm.valid"
-          >
-            Update
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</ng-template>
+</div>

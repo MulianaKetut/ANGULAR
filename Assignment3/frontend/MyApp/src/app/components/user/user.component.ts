@@ -34,7 +34,6 @@ export class UserComponent implements OnInit {
   userId: number = -1;
   postData: any;
   event: EventEmitter<any> = new EventEmitter();
-  modify: string | null = localStorage.getItem('modify');
 
   constructor(
     private builder: FormBuilder,
@@ -56,8 +55,6 @@ export class UserComponent implements OnInit {
       },
       { validator: ConfirmedValidator('password', 'confirmPassword') }
     );
-
-    this.setDataUser();
   }
 
   ngOnInit(): void {}
@@ -126,61 +123,4 @@ export class UserComponent implements OnInit {
     this.bsModalRef.hide();
   }
 
-  onUserEditFormSubmit() {
-    let postData: any = {
-      Id: this.userId,
-      Title: this.addNewUserForm.get('title')?.value,
-      FirstName: this.addNewUserForm.get('firstName')?.value,
-      LastName: this.addNewUserForm.get('lastName')?.value,
-      Role: this.addNewUserForm.get('role')?.value,
-      Email: this.addNewUserForm.get('email')?.value,
-      Password: this.addNewUserForm.get('password')?.value,
-      ConfirmPassword: this.addNewUserForm.get('confirmPassword')?.value,
-    };
-
-    this.userService.updateUser(postData, this.userId).subscribe((data) => {
-      console.log('DATA UPDATE+> ', data);
-      this.event.emit('OK');
-    });
-    this.onClose();
-  }
-
-  setDataUser() {
-    this.userService.userIdData.subscribe((data: any) => {
-      this.userId = data;
-      console.log('id update => ', this.userId);
-      if (this.userId !== undefined) {
-        this.userService.getUserById(this.userId).subscribe(
-          (data) => {
-            this.postData = data;
-
-            if (this.addNewUserForm != null && this.postData != null) {
-              this.addNewUserForm.controls['title'].setValue(
-                this.postData.title
-              );
-              this.addNewUserForm.controls['firstName'].setValue(
-                this.postData.firstName
-              );
-              this.addNewUserForm.controls['lastName'].setValue(
-                this.postData.lastName
-              );
-              this.addNewUserForm.controls['role'].setValue(this.postData.role);
-              this.addNewUserForm.controls['email'].setValue(
-                this.postData.email
-              );
-              this.addNewUserForm.controls['password'].setValue(
-                this.postData.password
-              );
-              this.addNewUserForm.controls['confirmPassword'].setValue(
-                this.postData.confirmPassword
-              );
-            }
-          },
-          (error) => {
-            console.log('Error while getting post details');
-          }
-        );
-      }
-    });
-  }
 }
