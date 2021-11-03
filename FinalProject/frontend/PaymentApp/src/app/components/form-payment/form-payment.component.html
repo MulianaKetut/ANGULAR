@@ -1,0 +1,124 @@
+<form id="add-form" [formGroup]="formPayment" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <input
+      type="hidden"
+      class="form-control"
+      id="paymentDetailId"
+      formControlName="paymentDetailId"
+      value="{{ item }}"
+    />
+    <label for="cardOwnerName" class="form-label">CARD OWNER NAME</label>
+    <input
+      type="text"
+      class="form-control"
+      id="cardOwnerName"
+      formControlName="cardOwnerName"
+      placeholder="Full Name"
+      aria-describedby="nameHelp"
+    />
+    <div
+      id="nameHelp"
+      *ngIf="cardOwnerName?.dirty && cardOwnerName?.errors?.required"
+      class="form-text text-danger"
+    >
+      Please enter your full name.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="cardNumber" class="form-label">CARD NUMBER</label>
+    <input
+      type="text"
+      class="form-control"
+      id="cardNumber"
+      formControlName="cardNumber"
+      aria-describedby="cardHelp"
+      placeholder="16 Digit Card Number"
+    />
+    <div
+      id="cardHelp"
+      *ngIf="cardNumber?.dirty && cardNumber?.errors?.required"
+      class="form-text text-danger"
+    >
+      Please enter your card number.
+    </div>
+    <div
+      id="cardHelp"
+      *ngIf="cardNumber?.dirty && cardNumber?.errors?.pattern"
+      class="form-text text-danger"
+    >
+      Please enter a number.
+    </div>
+    <div
+      id="cardHelp"
+      *ngIf="
+        (cardNumber?.dirty && cardNumber?.errors?.minlength) ||
+        cardNumber?.errors?.maxlength
+      "
+      class="form-text text-danger"
+    >
+      Please enter 16 digit card number.
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="mb-3">
+        <label for="securityCode" class="form-label">SECURITY CODE</label>
+        <input
+          type="password"
+          class="form-control"
+          id="securityCode"
+          formControlName="securityCode"
+          aria-describedby="codeHelp"
+          placeholder="Security Code"
+        />
+        <div
+          id="codeHelp"
+          *ngIf="securityCode?.dirty && securityCode?.errors?.required"
+          class="form-text text-danger"
+        >
+          Please enter your security code.
+        </div>
+        <div
+          id="codeHelp"
+          *ngIf="securityCode?.dirty && securityCode?.errors?.minlength"
+          class="form-text text-danger"
+        >
+          Please enter min 6 character.
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="mb-3">
+        <label for="expirationDate" class="form-label">VALID THROUGH</label>
+        <input
+          type="date"
+          class="form-control"
+          id="expirationDate"
+          formControlName="expirationDate"
+          aria-describedby="validHelp"
+        />
+        <div
+          id="validHelp"
+          *ngIf="securityCode?.dirty && securityCode?.errors?.invalidDate"
+          class="form-text text-danger"
+        >
+          Please choose your valid through.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!formPayment.valid"
+    >
+      {{ namaBtn }}
+    </button>
+  </div>
+  <div class="row">
+    <button (click)="onReset()" class="btn btn-secondary" [hidden]="item == -1">
+      Cancel
+    </button>
+  </div>
+</form>

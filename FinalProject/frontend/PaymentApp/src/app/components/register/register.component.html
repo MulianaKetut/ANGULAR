@@ -1,0 +1,110 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-6 shadow-lg rounded-lg">
+      <div class="card rounded-lg">
+        <h5 class="card-header text-center">Register</h5>
+      </div>
+      <div class="auth-wrapper mt-4">
+        <form
+          class="form-gorup"
+          [formGroup]="signupForm"
+          (ngSubmit)="registerUser()"
+        >
+          <div class="form-group mb-3">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="username"
+              placeholder="Enter username..."
+              aria-describedby="nameHelp"
+            />
+            <div
+              id="nameHelp"
+              *ngIf="username?.dirty && username?.errors?.required"
+              class="form-text text-danger"
+            >
+              Please enter your username.
+            </div>
+            <div
+              id="nameHelp"
+              *ngIf="username?.dirty && username?.errors?.minlength"
+              class="form-text text-danger"
+            >
+              Min 5 characters.
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="Enter email..."
+              aria-describedby="emailHelp"
+            />
+            <div
+              id="emailHelp"
+              *ngIf="email?.dirty && email?.errors?.required"
+              class="form-text text-danger"
+            >
+              Please enter your email.
+            </div>
+            <div
+              id="emailHelp"
+              *ngIf="email?.dirty && email?.errors?.email"
+              class="form-text text-danger"
+            >
+              Please enter email type.
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+              placeholder="Enter password..."
+              aria-describedby="passwordHelp"
+            />
+            <div
+              id="passwordHelp"
+              *ngIf="password?.dirty && password?.errors?.required"
+              class="form-text text-danger"
+            >
+              Please enter your password.
+            </div>
+            <div
+              id="passwordHelp"
+              *ngIf="password?.dirty && password?.errors?.pattern"
+              class="form-text text-danger"
+            >
+              Must contain at least one uppercase character, one lowercase
+              character, one digit number and one special character.
+            </div>
+            <div
+              id="passwordHelp"
+              *ngIf="password?.dirty && password?.errors?.minlength"
+              class="form-text text-danger"
+            >
+              Min 8 characters.
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-block btn-primary"
+            [disabled]="!signupForm.valid"
+          >
+            Submit
+          </button>
+          <div class="label text-center mb-4 mt-2">
+            Have an account?
+            <a [routerLink]="['/login']">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
